@@ -23,13 +23,17 @@ namespace SmartCoffeeMachine.WebAPI.Controllers
         ///     Request to make a new coffee 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateCoffeeModel createCoffeeModel)
+        public async Task<IActionResult> Create([FromBody] CreateCoffeeCommand createCoffeeModel)
         {
             Guid orderId = Guid.NewGuid();
+            CreateCoffeeResponse response = new CreateCoffeeResponse()
+            {
+                OrderId = orderId
+            };
 
             // TODO : decouple long-running task using async message queue.
 
-            return Ok(orderId);
+            return Ok(response);
         }
 
     }

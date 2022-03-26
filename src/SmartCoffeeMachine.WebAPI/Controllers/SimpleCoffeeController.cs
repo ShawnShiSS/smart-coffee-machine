@@ -23,7 +23,7 @@ namespace SmartCoffeeMachine.WebAPI.Controllers
         ///     Request to make a new coffee 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateCoffeeModel createCoffeeModel)
+        public async Task<IActionResult> Create([FromBody] CreateCoffeeCommand createCoffeeModel)
         {
             await Task.Delay(3000);
 
