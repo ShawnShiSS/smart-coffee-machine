@@ -24,16 +24,10 @@ namespace SmartCoffeeMachine.WebAPI
             // Add a messsage broker using MassTransit
             services.AddMassTransit(busRegistrationConfigurator => 
             {
-                // Register consumers
+                // Register consumers that will run in the same process as the Web API.
                 busRegistrationConfigurator.AddConsumer<MakeCoffeeConsumer>();
 
-                // Azure Service Bus
-                //busRegistrationConfigurator.UsingAzureServiceBus((context, cfg) =>
-                //{
-                //    // TODO : Update connection string
-                //    cfg.Host("connection-string");
-                //});
-
+                // In memory transport to handle messages 
                 busRegistrationConfigurator.UsingInMemory((context, cfg) =>
                 {
                     cfg.ConfigureEndpoints(context);
