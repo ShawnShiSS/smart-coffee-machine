@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SmartCoffeeMachine.MessageContracts;
 using SmartCoffeeMachine.WebAPI.Models;
 using System;
 using System.Threading.Tasks;
@@ -10,28 +12,40 @@ namespace SmartCoffeeMachine.WebAPI.Controllers
     [ApiController]
     public class SmartCoffeeController : ControllerBase
     {
-        
-        private readonly ILogger<SmartCoffeeController> _logger;
+        /// <summary>
+        ///     Endpoint to publish an event/message.
+        /// </summary>
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public SmartCoffeeController(ILogger<SmartCoffeeController> logger)
+        private readonly ILogger<SmartCoffeeController> _logger;
+        
+        
+        public SmartCoffeeController(IPublishEndpoint publishEndpoint,
+                                     ILogger<SmartCoffeeController> logger)
         {
-            _logger = logger;
+            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        // POST: api/SmartCoffee
+        // POST: api/Order
         /// <summary>
         ///     Request to make a new coffee 
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateCoffeeCommand createCoffeeModel)
+        public async Task<IActionResult> Post([FromBody] MakeCoffeeCommand command)
         {
             Guid orderId = Guid.NewGuid();
-            CreateCoffeeResponse response = new CreateCoffeeResponse()
+            MakeCoffeeResponse response = new MakeCoffeeResponse()
             {
                 OrderId = orderId
             };
 
             // TODO : decouple long-running task using async message queue.
+            await _publishEndpoint.Publish<IOrderAccepted>(new
+            {
+                OrderId = orderId,
+                CoffeeType = command.CoffeeType
+            });
 
             return Ok(response);
         }

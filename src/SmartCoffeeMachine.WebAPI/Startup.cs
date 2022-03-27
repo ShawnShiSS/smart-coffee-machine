@@ -1,9 +1,11 @@
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using SmartCoffeeMachine.MessageComponents.Consumers;
 
 namespace SmartCoffeeMachine.WebAPI
 {
@@ -19,6 +21,24 @@ namespace SmartCoffeeMachine.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add a messsage broker using MassTransit
+            services.AddMassTransit(busRegistrationConfigurator => 
+            {
+                // Register consumers
+                busRegistrationConfigurator.AddConsumer<MakeCoffeeConsumer>();
+
+                // Azure Service Bus
+                //busRegistrationConfigurator.UsingAzureServiceBus((context, cfg) =>
+                //{
+                //    // TODO : Update connection string
+                //    cfg.Host("connection-string");
+                //});
+
+                busRegistrationConfigurator.UsingInMemory((context, cfg) =>
+                {
+                    cfg.ConfigureEndpoints(context);
+                });
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
