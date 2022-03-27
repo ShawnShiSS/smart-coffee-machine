@@ -40,7 +40,6 @@ namespace SmartCoffeeMachine.WebAPI.Controllers
                 OrderId = orderId
             };
 
-            // TODO : decouple long-running task using async message queue.
             await _publishEndpoint.Publish<IOrderAccepted>(new
             {
                 OrderId = orderId,
