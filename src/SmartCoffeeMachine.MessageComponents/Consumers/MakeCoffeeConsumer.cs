@@ -23,6 +23,7 @@ namespace SmartCoffeeMachine.MessageComponents.Consumers
         {
             _logger.LogInformation($"{nameof(MakeCoffeeConsumer)}: Starting to make coffee ({context.Message.CoffeeType}) for order id = {context.Message.OrderId}. UTC: {DateTime.UtcNow}.");
 
+            // Pretend to be doing some long-running tasks
             await Task.Delay(3000);
 
             _logger.LogInformation($"{nameof(MakeCoffeeConsumer)}: Completed to make coffee ({context.Message.CoffeeType}) for order id = {context.Message.OrderId}. UTC: {DateTime.UtcNow}.");
