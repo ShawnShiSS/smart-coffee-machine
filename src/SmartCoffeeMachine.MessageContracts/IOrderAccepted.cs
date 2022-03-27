@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SmartCoffeeMachine.MessageContracts
 {
-    public interface IOrderRequested
+    public interface IOrderAccepted
     {
         /// <summary>
         /// Order Id.
@@ -14,7 +12,6 @@ namespace SmartCoffeeMachine.MessageContracts
         /// <summary>
         /// Coffee type.
         /// </summary>
-        string Type { get; }
+        string CoffeeType { get; }
     }
-
 }
