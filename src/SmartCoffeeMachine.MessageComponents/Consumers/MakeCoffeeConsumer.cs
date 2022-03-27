@@ -21,11 +21,11 @@ namespace SmartCoffeeMachine.MessageComponents.Consumers
 
         public async Task Consume(ConsumeContext<IOrderAccepted> context)
         {
-            _logger.LogInformation($"{nameof(MakeCoffeeConsumer)}: Starting to make coffee ({context.Message.CoffeeType}) for order id = {context.Message.OrderId}.");
+            _logger.LogInformation($"{nameof(MakeCoffeeConsumer)}: Starting to make coffee ({context.Message.CoffeeType}) for order id = {context.Message.OrderId}. UTC: {DateTime.UtcNow}.");
 
             await Task.Delay(3000);
 
-            _logger.LogInformation($"{nameof(MakeCoffeeConsumer)}: Completed to make coffee ({context.Message.CoffeeType}) for order id = {context.Message.OrderId}.");
+            _logger.LogInformation($"{nameof(MakeCoffeeConsumer)}: Completed to make coffee ({context.Message.CoffeeType}) for order id = {context.Message.OrderId}. UTC: {DateTime.UtcNow}.");
 
         }
     }
