@@ -7,12 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCoffeeMachine.WebAPI",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8A66E3A5-C04B-4CE2-B938-EB134CB36E21}"
 	ProjectSection(SolutionItems) = preProject
+		Solution Items\Network Topology.png = Solution Items\Network Topology.png
 		Solution Items\System Diagram.png = Solution Items\System Diagram.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCoffeeMachine.MessageContracts", "src\SmartCoffeeMachine.MessageContracts\SmartCoffeeMachine.MessageContracts.csproj", "{8219FA2F-D377-4F85-B08C-9630D4EED115}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCoffeeMachine.MessageContracts", "src\SmartCoffeeMachine.MessageContracts\SmartCoffeeMachine.MessageContracts.csproj", "{8219FA2F-D377-4F85-B08C-9630D4EED115}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCoffeeMachine.MessageComponents", "src\SmartCoffeeMachine.MessageComponents\SmartCoffeeMachine.MessageComponents.csproj", "{1E2C2526-5713-4189-A426-35E4DA1FB397}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCoffeeMachine.MessageComponents", "src\SmartCoffeeMachine.MessageComponents\SmartCoffeeMachine.MessageComponents.csproj", "{1E2C2526-5713-4189-A426-35E4DA1FB397}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
