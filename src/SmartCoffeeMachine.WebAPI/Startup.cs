@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SmartCoffeeMachine.MessageComponents.Consumers;
+using SmartCoffeeMachine.MessageContracts;
 
 namespace SmartCoffeeMachine.WebAPI
 {
@@ -27,13 +28,23 @@ namespace SmartCoffeeMachine.WebAPI
                 // Register consumers that will run in the same process as the Web API.
                 busRegistrationConfigurator.AddConsumer<MakeCoffeeConsumer>();
 
-                // In memory transport to handle messages 
-                busRegistrationConfigurator.UsingInMemory((context, cfg) =>
+                // In-memory message broker to handle messages 
+                //busRegistrationConfigurator.UsingInMemory((context, cfg) =>
+                //{
+                //    cfg.ConfigureEndpoints(context);
+                //});
+
+                // Azure Service Bus message broker
+                busRegistrationConfigurator.UsingAzureServiceBus((context, cfg) =>
                 {
+                    string azureServiceBusConnectionString = Configuration["AzureServiceBusConnectionString"];
+                    cfg.Host(azureServiceBusConnectionString);
+
+                    // Configure the Azure Service Bus topics, subsciptions, and the underlying queues for each subscription
                     cfg.ConfigureEndpoints(context);
                 });
             });
-
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
