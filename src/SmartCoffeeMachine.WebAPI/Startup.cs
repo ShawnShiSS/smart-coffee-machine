@@ -5,8 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using SmartCoffeeMachine.MessageComponents.Consumers;
-using SmartCoffeeMachine.MessageContracts;
 
 namespace SmartCoffeeMachine.WebAPI
 {
@@ -26,7 +24,7 @@ namespace SmartCoffeeMachine.WebAPI
             services.AddMassTransit(busRegistrationConfigurator => 
             {
                 // Register consumers that will run in the same process as the Web API.
-                busRegistrationConfigurator.AddConsumer<MakeCoffeeConsumer>();
+                //busRegistrationConfigurator.AddConsumer<MakeCoffeeConsumer>();
 
                 // In-memory message broker to handle messages 
                 //busRegistrationConfigurator.UsingInMemory((context, cfg) =>
