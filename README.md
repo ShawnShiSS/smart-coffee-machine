@@ -8,10 +8,10 @@ Showcase how we can decouple long-running tasks from HTTP request processing in 
 <img src="https://github.com/ShawnShiSS/smart-coffee-machine/blob/main/Solution%20Items/NetworkTopology.png" width="100%">
 
 ## Getting Started
-Prerequisites:
+### Prerequisites:
 1. Azure Service Bus namespace (please see article below on how to create a namespace and generate a connection string)
 
-Development
+### Development
 1. Run "dotnet run" in Web API application to run the REST API.
 2. Run "dotnet run --no-build" in Services application to run the consumer instances.
 
