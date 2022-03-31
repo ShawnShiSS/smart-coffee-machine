@@ -19,4 +19,4 @@ For detailed description on the development journey and how things work, please 
 * [REST API Best Practices — Decouple Long-running Tasks from HTTP Request Processing](https://medium.com/geekculture/rest-api-best-practices-decouple-long-running-tasks-from-http-request-processing-9fab2921ace8)
 * [Decouple Long-running Tasks from HTTP Request Processing — Using In-Memory Message Broker](https://shawn-shi.medium.com/rest-api-best-practices-decouple-long-running-tasks-from-http-request-processing-d6efde658cc7)
 * [Decouple Long-running Tasks from HTTP Request Processing — Using Azure Service Bus](https://shawn-shi.medium.com/decouple-long-running-tasks-from-http-request-processing-using-azure-service-bus-3a11605714ee)
-* 
+* [Decouple Long-running Tasks from HTTP Request Processing — Scalable Consumers](https://shawn-shi.medium.com/decouple-long-running-tasks-from-http-request-processing-scalable-consumers-380e24d662de)
