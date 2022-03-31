@@ -9,7 +9,7 @@ Showcase how we can decouple long-running tasks from HTTP request processing in 
 
 ## Getting Started
 Prerequisites:
-1. Azure Service Bus namespace
+1. Azure Service Bus namespace (please see article below on how to create a namespace and generate a connection string)
 
 Development
 1. Run "dotnet run" in Web API application to run the REST API.
