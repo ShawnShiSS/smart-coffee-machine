@@ -23,3 +23,6 @@ For detailed description on the development journey and how things work, please 
 
 ## Give a Star
 :star: If you enjoy this project, or are using this project to start your exciting new project, or are just forking it to play, please give it a star. Much appreciated! Thanks! :star: 
+
+### Future Development
+* Add support to check coffee status (brewing, etc.)
